@@ -16,6 +16,10 @@ public class DemoModel {
 	 * An ArrayList of java.awt.Point references 
 	 */
 	private ArrayList<Point> points;
+	
+	/** 
+	 * An ArrayList of java.awt.Color references 
+	 */
 	private ArrayList<Color> colors;
 	
 	/** 
@@ -32,6 +36,7 @@ public class DemoModel {
 	/**
 	 * Add a Point to the points arraylist.
 	 * @param point the Point to be added to points.
+	 * Add a Color to the colors arraylist.
 	 */
 	public void addPoint(Point point) {
 		points.add(point);
@@ -45,8 +50,6 @@ public class DemoModel {
 	 */
 	public Point getPoint(int i) {
 		if (i >= 0 && i < points.size()) {
-			// probably should return a new point so that the return
-			// value cannot be used to change the array element
 			return points.get(i);
 		}
 		return null;
@@ -67,10 +70,15 @@ public class DemoModel {
 		return selectedColor;
 	}
 	
+	/**
+	 * Returns color at index i.
+	 * Returns null if no such color exists.
+	 * @param i
+	 * @return the color of a point
+	 */
+	
 	public Color getColor(int i) {
 		if (i >= 0 && i < colors.size()) {
-			// probably should return a new point so that the return
-			// value cannot be used to change the array element
 			return colors.get(i);
 		}
 		return null;
