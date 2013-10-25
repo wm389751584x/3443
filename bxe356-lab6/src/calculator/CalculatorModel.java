@@ -67,6 +67,8 @@ public class CalculatorModel {
 	 * @param text is the name of the button that the user has just clicked
 	 */
 	public void update(String text) {
+		double temp = 0.0;
+		double temp2 = 0.0;
 		int i = 0;
 		if (start) {	
 			internalValue = displayValue;
@@ -88,8 +90,6 @@ public class CalculatorModel {
 			}
 		} else {
 		    if (operation.equals("+")) {
-		    	System.out.println("Internal: " + internalValue);
-				System.out.println("Display: " + displayValue);
 				displayValue = internalValue + displayValue;
 			} else if (operation.equals("-")) {
 				displayValue = internalValue - displayValue;
@@ -98,19 +98,35 @@ public class CalculatorModel {
 			} else if (operation.equals("/")) {
 				displayValue = internalValue / displayValue;
 			} else if (operation.equals("^")) {
-				double temp = displayValue;
-				double temp2 = internalValue;
+				temp = displayValue;
+				temp2 = internalValue;
 				for(i = 0; i < temp - 1; i++){
-				   System.out.println("Internal: " + internalValue);
-				   System.out.println("Display: " + displayValue);
 				   internalValue *= temp2;
 				}
 				displayValue = internalValue;
 			} else if (operation.equals("Clr")) {
 				start = true;
-			} else if (operation.equals("square root")) {
+			} else if (operation.equals("sqr root")) {
 				displayValue = Math.sqrt(internalValue);
+			} else if (operation.equals("ln")) {
+				displayValue = Math.log(internalValue);
+			} else if (operation.equals("log")) {
+				displayValue = Math.log10(internalValue);
+			} else if (operation.equals("%")) {
+				displayValue = internalValue % displayValue;
+			} else if (operation.equals("sin")) {
+				displayValue = Math.sin(internalValue);
+			} else if (operation.equals("cos")) {
+				displayValue = Math.cos(internalValue);
+			} else if (operation.equals("!")) {
+				temp = 1;
+				for(i = (int)internalValue; i > 0; i--){
+				   temp *= i; 	
+				}
+				
+				displayValue = temp;
 			}
+		    
 			displayString = "" + displayValue;
 			internalValue = displayValue;
 			operation = text;

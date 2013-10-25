@@ -70,11 +70,12 @@ public class CalculatorView extends JFrame {
 		buttonsPanel.setLayout(new GridLayout(5, 5, 0, 0));
 
 		String[] buttonStrings = {
-				"1", "2", "3", "+", "-",
-				"4", "5", "6", "*", "/",
-				"7", "8", "9", "%", ".",
-				"^", "0",  "=", "!", "square root",
-				"Clr"
+				"^", "ln", "log", "sin", "cos",
+				"+", "-", "1", "2", "3", 
+				"*", "/", "4", "5", "6", 
+				"%", ".", "7", "8", "9", 
+				"!", "sqr root", "Clr", "0",  "=", 
+				
 		};
 
 		for (String s : buttonStrings) {
