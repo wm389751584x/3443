@@ -23,7 +23,13 @@ public class Lab8 {
     public static void main(String[] args) throws IOException {
         // These statements should be be into a loop that runs until all the
         // statements execute without an exception.
-        File file = getFileFromUser();
+    	File file = null;
+    	for(;;){
+           file = getFileFromUser();
+           if(file != null)
+        	   break;
+    	}
+    	
         FileCounts counter = new FileCounts(file);
         System.out.println(file);
         System.out.printf("%d lines\n", counter.lineCount());
@@ -44,24 +50,31 @@ public class Lab8 {
      */
     private static File getFileFromUser() throws FileNotFoundException {
         // display file dialog, so user can choose file or directory to open
-        JFileChooser fileChooser = new JFileChooser(".");
+    	File fileName = null;
+        
+    	JFileChooser fileChooser = new JFileChooser(".");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
         int result = fileChooser.showOpenDialog(null);
 
         // if user clicked Cancel button on dialog, throw exception
+        try{
         if (result == JFileChooser.CANCEL_OPTION)
             throw new FileNotFoundException("User selected cancel");
-
-        File fileName = fileChooser.getSelectedFile(); // get File
+        } catch (FileNotFoundException e) {}
+        fileName = fileChooser.getSelectedFile(); // get File
 
         // display error and throw exception if invalid
-        if ((fileName == null) || (fileName.getName().equals(""))) {
-            JOptionPane.showMessageDialog(null, "Invalid Name", "Invalid Name",
+        try{
+           if ((fileName == null) || (fileName.getName().equals(""))) {
+              JOptionPane.showMessageDialog(null, "Invalid Name", "Invalid Name",
                     JOptionPane.ERROR_MESSAGE);
-            throw new FileNotFoundException("Invalid Name: " + fileName);
-        } // end if
-
+              throw new FileNotFoundException("Invalid Name: " + fileName);
+           }
+        } catch (FileNotFoundException e) {}
+         // end if
+        
+        
         return fileName;
     } // end method getFileFromUser
 

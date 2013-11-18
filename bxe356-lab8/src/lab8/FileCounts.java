@@ -22,7 +22,7 @@ public class FileCounts {
             input = new Scanner(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
+            
         }
     	
     	try{ 
@@ -33,10 +33,10 @@ public class FileCounts {
     	} catch (NoSuchElementException elementException) {
             System.err.println("File improperly formed.");
             input.close();
-            System.exit(1);
+            
         } catch (IllegalStateException stateException) {
             System.err.println("Error reading from file.");
-            System.exit(1);
+            
         } finally {
             if (input != null)
                 input.close(); // close the Scanner and the file
@@ -52,7 +52,7 @@ public class FileCounts {
             input = new Scanner(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
+            
         }
     	
     	try{ 
@@ -63,10 +63,10 @@ public class FileCounts {
     	} catch (NoSuchElementException elementException) {
             System.err.println("File improperly formed.");
             input.close();
-            System.exit(1);
+            
         } catch (IllegalStateException stateException) {
             System.err.println("Error reading from file.");
-            System.exit(1);
+            
         } finally {
             if (input != null)
                 input.close(); // close the Scanner and the file
@@ -81,7 +81,7 @@ public class FileCounts {
             inputChar = new FileReader(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
+           
         }
     	
     	try{ 
@@ -91,10 +91,10 @@ public class FileCounts {
      	} catch (NoSuchElementException elementException) {
              System.err.println("File improperly formed.");
              inputChar.close();
-             System.exit(1);
+             
          } catch (IllegalStateException stateException) {
              System.err.println("Error reading from file.");
-             System.exit(1);
+             
          } 
     	finally {
             if (inputChar != null)
@@ -110,7 +110,7 @@ public class FileCounts {
             inputByte = new FileInputStream(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
+            
         }
     	
     	try{ 
@@ -120,10 +120,10 @@ public class FileCounts {
      	} catch (NoSuchElementException elementException) {
              System.err.println("File improperly formed.");
              input.close();
-             System.exit(1);
+             
          } catch (IllegalStateException stateException) {
              System.err.println("Error reading from file.");
-             System.exit(1);
+             
          } 
     	finally {
             if (inputByte != null)
