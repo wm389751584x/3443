@@ -23,8 +23,14 @@ public class Lab8 {
     public static void main(String[] args) throws IOException {
         // These statements should be be into a loop that runs until all the
         // statements execute without an exception.
-        File file = getFileFromUser();
-        FileCounts counter = new FileCounts(file);
+    	File file = null;
+    	FileCounts counter = null;
+    	for(;;){
+           file = getFileFromUser();
+           counter = new FileCounts(file);
+    	   if (file != null)
+    		   break;
+    	}
         System.out.println(file);
         System.out.printf("%d lines\n", counter.lineCount());
         System.out.printf("%d tokens\n", counter.tokenCount());
@@ -50,17 +56,24 @@ public class Lab8 {
         int result = fileChooser.showOpenDialog(null);
 
         // if user clicked Cancel button on dialog, throw exception
-        if (result == JFileChooser.CANCEL_OPTION)
-            throw new FileNotFoundException("User selected cancel");
-
+        try {
+           if (result == JFileChooser.CANCEL_OPTION)
+              throw new FileNotFoundException("User selected cancel");
+        } catch (FileNotFoundException e) {
+        	System.err.println("Error opening file.");
+        }
         File fileName = fileChooser.getSelectedFile(); // get File
 
         // display error and throw exception if invalid
-        if ((fileName == null) || (fileName.getName().equals(""))) {
-            JOptionPane.showMessageDialog(null, "Invalid Name", "Invalid Name",
+        try {
+           if ((fileName == null) || (fileName.getName().equals(""))) {
+              JOptionPane.showMessageDialog(null, "Invalid Name", "Invalid Name",
                     JOptionPane.ERROR_MESSAGE);
-            throw new FileNotFoundException("Invalid Name: " + fileName);
-        } // end if
+              throw new FileNotFoundException("Invalid Name: " + fileName);
+           } // end if
+        } catch (FileNotFoundException e) {
+        	
+        }
 
         return fileName;
     } // end method getFileFromUser

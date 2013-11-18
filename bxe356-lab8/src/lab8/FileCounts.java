@@ -3,7 +3,11 @@ package lab8;
 import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
+/**
+ * class to find the sizes of different attributes
+ * @author myoder
+ *
+ */
 public class FileCounts {
     private File file;
     private Scanner input;
@@ -15,6 +19,10 @@ public class FileCounts {
         
     }
  
+    /**
+     * counts the number lines in a file
+     * @return
+     */
     public int lineCount() {
     	int count = 0;
     	
@@ -22,7 +30,6 @@ public class FileCounts {
             input = new Scanner(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
         }
     	
     	try{ 
@@ -33,10 +40,8 @@ public class FileCounts {
     	} catch (NoSuchElementException elementException) {
             System.err.println("File improperly formed.");
             input.close();
-            System.exit(1);
         } catch (IllegalStateException stateException) {
             System.err.println("Error reading from file.");
-            System.exit(1);
         } finally {
             if (input != null)
                 input.close(); // close the Scanner and the file
@@ -44,6 +49,10 @@ public class FileCounts {
     	return count;
     } // end method lineCount
     
+    /**
+     * counts the number of words in a file
+     * @return
+     */
     
     public int tokenCount() {
     	int count = 0;
@@ -52,7 +61,6 @@ public class FileCounts {
             input = new Scanner(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
         }
     	
     	try{ 
@@ -63,10 +71,8 @@ public class FileCounts {
     	} catch (NoSuchElementException elementException) {
             System.err.println("File improperly formed.");
             input.close();
-            System.exit(1);
         } catch (IllegalStateException stateException) {
             System.err.println("Error reading from file.");
-            System.exit(1);
         } finally {
             if (input != null)
                 input.close(); // close the Scanner and the file
@@ -74,6 +80,11 @@ public class FileCounts {
     	return count;
     }
     
+    /**
+     * counts the number of characters in a file
+     * @return
+     * @throws IOException
+     */
     public int charCount() throws IOException {
     	int count = 0;
     	
@@ -81,7 +92,6 @@ public class FileCounts {
             inputChar = new FileReader(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
         }
     	
     	try{ 
@@ -91,10 +101,8 @@ public class FileCounts {
      	} catch (NoSuchElementException elementException) {
              System.err.println("File improperly formed.");
              inputChar.close();
-             System.exit(1);
          } catch (IllegalStateException stateException) {
              System.err.println("Error reading from file.");
-             System.exit(1);
          } 
     	finally {
             if (inputChar != null)
@@ -103,6 +111,11 @@ public class FileCounts {
     	return count;
     }
     
+    /**
+     * counts the number of bytes in a file
+     * @return
+     * @throws IOException
+     */
     public int byteCount() throws IOException {
     	int count = 0;
     	
@@ -110,7 +123,6 @@ public class FileCounts {
             inputByte = new FileInputStream(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
-            System.exit(1);
         }
     	
     	try{ 
@@ -120,10 +132,8 @@ public class FileCounts {
      	} catch (NoSuchElementException elementException) {
              System.err.println("File improperly formed.");
              input.close();
-             System.exit(1);
          } catch (IllegalStateException stateException) {
              System.err.println("Error reading from file.");
-             System.exit(1);
          } 
     	finally {
             if (inputByte != null)
