@@ -109,8 +109,7 @@ public class FileCounts {
     	try {
             inputByte = new FileInputStream(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println("Error opening file.");
-            
+            System.err.println("Error opening file.");            
         }
     	
     	try{ 
@@ -123,7 +122,6 @@ public class FileCounts {
              
          } catch (IllegalStateException stateException) {
              System.err.println("Error reading from file.");
-             
          } 
     	finally {
             if (inputByte != null)
