@@ -7,30 +7,46 @@ public class DualHashMap<K, V> implements DualMap<K, V> {
 	HashMap<Object, Object> kV;
 	HashMap<Object, Object> vK;
 	
+	/*
+	 * creates two hashmaps
+	 */
 	public DualHashMap(){
 		kV = new HashMap<Object, Object>();
 		vK = new HashMap<Object, Object>();
 	}
-
+	
+	
+	/*
+	 * matches keys to values 
+	 * and values to keys and doesn't allow duplicates
+	 */
 	@Override
 	public void put(K key, V value) {
 		// TODO Auto-generated method stub
-		if(kV.put(key, value) != null){
-			this.remove(key, value);			
-		}
-				
-		kV.put(key, value);
-		vK.put(value, key);
+		   kV.remove(vK.get(value));
+		   vK.remove(kV.get(key));
+		   kV.put(key, value);
+		   vK.put(value, key);
 		
 	}
 
+	
+	/*
+	 * remove keys from the key to value hashmap and
+	 * removes values from the value to keys hashmap
+	 */
 	@Override
 	public void remove(K key, V value) {
 		// TODO Auto-generated method stub
-		kV.remove(value);
-		vK.remove(key);
+		kV.remove(key);
+		vK.remove(value);
 	}
 
+	
+	
+	/*
+	 * gets the value from the key it's mapped to
+	 */
 	@Override
 	public V get(K key) {
 		// TODO Auto-generated method stub
@@ -41,6 +57,9 @@ public class DualHashMap<K, V> implements DualMap<K, V> {
 		return (V) temp;
 	}
 
+	/*
+	 * gets the key from the value that's it's mapped to
+	 */
 	@Override
 	public K reverseGet(V value) {
 		// TODO Auto-generated method stub
