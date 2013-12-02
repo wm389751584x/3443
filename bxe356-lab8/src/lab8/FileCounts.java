@@ -3,11 +3,7 @@ package lab8;
 import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-/**
- * class to find the sizes of different attributes
- * @author myoder
- *
- */
+
 public class FileCounts {
     private File file;
     private Scanner input;
@@ -19,10 +15,6 @@ public class FileCounts {
         
     }
  
-    /**
-     * counts the number lines in a file
-     * @return
-     */
     public int lineCount() {
     	int count = 0;
     	
@@ -30,6 +22,7 @@ public class FileCounts {
             input = new Scanner(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error opening file.");
+           
         }
     	
     	try{ 
@@ -40,8 +33,12 @@ public class FileCounts {
     	} catch (NoSuchElementException elementException) {
             System.err.println("File improperly formed.");
             input.close();
+
+            
         } catch (IllegalStateException stateException) {
             System.err.println("Error reading from file.");
+
+            
         } finally {
             if (input != null)
                 input.close(); // close the Scanner and the file
@@ -122,7 +119,6 @@ public class FileCounts {
     	try {
             inputByte = new FileInputStream(this.file);
         } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println("Error opening file.");
         }
     	
     	try{ 
