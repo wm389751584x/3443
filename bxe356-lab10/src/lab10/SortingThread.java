@@ -16,17 +16,17 @@ public class SortingThread implements Runnable {
 	 */
 	public SortingThread(int i, int[] array, SortingBuffer buffer) {
 		temp = i;
+		Arrays.sort(array);
 		tempA = array;
 		this.buffer = buffer;
 	}
 
 	/**
-	 * sort arrays and prints out the unsynchronized and synchronized order
+	 * prints out the unsynchronized and synchronized arrays
 	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Arrays.sort(tempA);
 		
 		for(int i = 0; i < tempA.length; i++) {
 		   System.out.println(temp + " unsynchronized " + tempA[i]);
